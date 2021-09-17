@@ -1,0 +1,69 @@
+<body>
+  <header>
+    <h1>CADASTRO DE CONTATOS</h1>
+  </header>
+
+  <main class="container">
+    <form
+      class="form"
+      [formGroup]="formulario"
+      (submit)="cadastrar(directive)"
+      #directive="ngForm"
+    >
+      <h2>Novo contato</h2>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="nome"
+          placeholder="Nome completo"
+          name="nome"
+        />
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="formulario.get('nome')?.errors?.required">
+          O nome é obrigatório!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="seuemail@dominio.com"
+          name="email"
+        />
+        <mat-icon matSuffix>alternate_email</mat-icon>
+        <mat-error *ngIf="formulario.get('email')?.errors?.email">
+          Informe um e-mail válido!
+        </mat-error>
+        <mat-error *ngIf="formulario.get('email')?.errors?.required">
+          O e-mail é obrigatório!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input
+          type="tel"
+          matInput
+          formControlName="telefone"
+          placeholder="(XX) XXXXX-XXXX"
+          name="telefone"
+        />
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="formulario.get('telefone')?.errors?.required">
+          O número de telefone é obrigatório!
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-copy">&copy; Copyright Mekylei Belchior - 2021</p>
+  </footer>
+</body>
